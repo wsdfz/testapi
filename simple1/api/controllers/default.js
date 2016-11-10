@@ -14,7 +14,11 @@ function doTest(req, res) {
 
   try {  
   	var method = req.method.toLowerCase();
-  	res.json(req.swagger.path[method].responses.default.description);
+	var r = req.swagger.path[method].responses.default.description;
+	if (r[0] === '{') {
+		r = JSON.parse(r);
+	}
+  	res.json(r);
   } catch (ex) {
   	res.json(req.swagger.apiPath);
   }

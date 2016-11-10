@@ -16,11 +16,20 @@ paths:
         "200":
           description: Success
         default:
-          description: '{"a": 5, "b": 10}'
+          description: '{"id": "abc", "description": "I am a good man", "type": "human being", "vod_type": "PIFF" }'
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        default:
+          description: OK
   /testB:
     get:
       responses:
         "200":
           description: Success
-  /swagger:
-    x-swagger-pipe: swagger_raw
